@@ -21,6 +21,9 @@ class CartController extends AppController
         $session->open();
         $cart = new Cart();
         $cart->addToCart($product, $qty);
+        if (! Yii::$app->request->isAjax) {
+            return $this->redirect(Yii::$app->request->referrer);
+        }
         return $this->render('cart-model', compact('session'));
     }
 
@@ -52,5 +55,12 @@ class CartController extends AppController
         $session->open();
         $this->layout = false;
         return $this->render('cart-model', compact('session'));
+    }
+
+    public function actionView()
+    {
+        $session = Yii::$app->session;
+        $session->open();
+        return $this->render('view', compact('session'));
     }
 }

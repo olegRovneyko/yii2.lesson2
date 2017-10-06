@@ -88,14 +88,14 @@ use yii\helpers\Url;
                             <?php if($product->sale): ?>
                                 <?= Html::img("@web/images/home/sale.png", ['alt' => 'Распродажа', 'class' => 'new'])?>
                             <?php endif?>
-                            <h2><?= $pruduct->name ?></h2>
+                            <h2><?= $product->name ?></h2>
                             <p>Web ID: 1089772</p>
                             <img src="/images/product-details/rating.png" alt="" />
                             <span>
 									<span>US $<?= $product->price ?></span>
 									<label>Quantity:</label>
 									<input type="text" value="1" id="qty">
-									<a href="#" class="btn btn-fefault cart add-to-cart" data-id="<?=$product->id?>">
+									<a href="<?= Url::to(['cart/add', 'id' => $product->id]) ?>" class="btn btn-fefault cart add-to-cart" data-id="<?=$product->id?>">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</a>
